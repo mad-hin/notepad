@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 public class notepadGUI {
@@ -9,6 +11,7 @@ public class notepadGUI {
     private JMenu file;
     private JMenu edit;
     private JFrame window;
+
     public static void main(String[] args){
         new notepadGUI();
     }
@@ -46,21 +49,30 @@ public class notepadGUI {
         file = new JMenu("File");
 
         JMenuItem newFile = new JMenuItem("New");
-        newFile.setMnemonic(KeyEvent.VK_N);
+        newFile.setAccelerator(KeyStroke.getKeyStroke('N', Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
         file.add(newFile);
 
         JMenuItem openFile = new JMenuItem("Open");
+        openFile.setAccelerator(KeyStroke.getKeyStroke('O', Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
         file.add(openFile);
 
         JMenuItem saveFile = new JMenuItem("Save");
+        saveFile.setAccelerator(KeyStroke.getKeyStroke('S', Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
         file.add(saveFile);
 
         JMenuItem saveAs = new JMenuItem("Save As");
+        saveAs.setAccelerator(KeyStroke.getKeyStroke('S',Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()+ InputEvent.ALT_DOWN_MASK));
         file.add(saveAs);
+
+        JMenuItem exit = new JMenuItem("Exit");
+        exit.setAccelerator(KeyStroke.getKeyStroke('X', Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
+        file.add(exit);
         mainMenu.add(file);
 
         //noinspection BoundFieldAssignment
         edit = new JMenu("Edit");
+
+
         mainMenu.add(edit);
         window.setJMenuBar(mainMenu);
     }
