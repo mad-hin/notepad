@@ -11,6 +11,7 @@ public class notepadGUI implements ActionListener {
     public JScrollPane scrollBar;
     public JMenu file;
     public JMenu edit;
+    public JMenu formate;
     public JFrame window;
 
     notepadFunction func = new notepadFunction(this);
@@ -100,6 +101,12 @@ public class notepadGUI implements ActionListener {
                 break;
             case "open":
                 func.openFile();
+                break;
+            case "save":
+                func.fileSave();
+                break;
+            case "saveAs":
+                func.fileSaveAs();
                 break;
             case "exit":
                 func.exitApp();
