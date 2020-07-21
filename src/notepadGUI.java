@@ -1,4 +1,7 @@
 import javax.swing.*;
+import javax.swing.event.UndoableEditEvent;
+import javax.swing.event.UndoableEditListener;
+import javax.swing.undo.UndoManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +23,7 @@ public class notepadGUI implements ActionListener {
     public JMenuItem undo;
     public JMenuItem redo;
     public boolean warpOn;
+    UndoManager ud = new UndoManager();
 
     notepadFunction func = new notepadFunction(this);
     notepadFormat format = new notepadFormat(this);
@@ -47,6 +51,12 @@ public class notepadGUI implements ActionListener {
     }
 
     public void init() {
+        textArea.getDocument().addUndoableEditListener(new UndoableEditListener() {
+            @Override
+            public void undoableEditHappened(UndoableEditEvent e) {
+                ud.addEdit(e.getEdit());
+            }
+        });
         //Create the scroll pane when it is needed
         //noinspection BoundFieldAssignment
         scrollBar = new JScrollPane(textArea,
@@ -206,6 +216,12 @@ public class notepadGUI implements ActionListener {
                 break;
             case "32":
                 format.setSize(32);
+                break;
+            case "undo":
+                func.undo();
+                break;
+            case"redo":
+                func.redo();
                 break;
         }
     }

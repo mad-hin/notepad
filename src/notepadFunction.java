@@ -81,4 +81,12 @@ public class notepadFunction {
             System.out.println("File cannot be save");
         }
     }
+
+    public void undo(){
+        gui.ud.undo();
+    }
+
+    public void redo(){
+        gui.ud.redo();
+    }
 }
