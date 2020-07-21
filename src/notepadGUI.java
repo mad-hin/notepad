@@ -11,10 +11,13 @@ public class notepadGUI implements ActionListener {
     public JScrollPane scrollBar;
     public JMenu file;
     public JMenu edit;
-    public JMenu formate;
+    public JMenu textFormat;
     public JFrame window;
+    public JMenu textFont;
+    public JMenu textSize;
 
     notepadFunction func = new notepadFunction(this);
+    notepadFormat format = new notepadFormat(this);
 
     public static void main(String[] args) {
         new notepadGUI();
@@ -24,6 +27,7 @@ public class notepadGUI implements ActionListener {
         createWindow();
         init();
         menuInit();
+        format.fontInit();
         window.setVisible(true);
     }
 
@@ -85,9 +89,13 @@ public class notepadGUI implements ActionListener {
 
         //noinspection BoundFieldAssignment
         edit = new JMenu("Edit");
-
-
         mainMenu.add(edit);
+
+        //noinspection BoundFieldAssignment
+        textFormat = new JMenu("Format");
+        textFont = new JMenu("Font");
+        textSize = new JMenu("Size");
+
         window.setJMenuBar(mainMenu);
     }
 
