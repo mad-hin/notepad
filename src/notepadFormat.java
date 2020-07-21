@@ -44,17 +44,8 @@ public class notepadFormat implements ActionListener {
     }
 
     public void setFont(String font) {
-        Font[] allFont = GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts();
-        String[] allFonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-        int i = 0;
-        for (String fonts : allFonts) {
-            i++;
-            if (font.equals(fonts)) {
-                gui.textArea.setFont(allFont[i]);
-                setSize(fontSize);
-                break;
-            }
-        }
+        gui.textArea.setFont(Font.decode(font));
+        setSize(fontSize);
     }
 
     @Override

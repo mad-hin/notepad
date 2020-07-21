@@ -45,11 +45,11 @@ public class notepadFunction {
         }
     }
 
-    public void fileSave(){
-        if(fileName == null){
+    public void fileSave() {
+        if (fileName == null) {
             fileSaveAs();
-        }else{
-            try{
+        } else {
+            try {
                 FileWriter writer = new FileWriter(fileAddress + fileName);
                 writer.write(gui.textArea.getText());
                 System.out.println("File saved");

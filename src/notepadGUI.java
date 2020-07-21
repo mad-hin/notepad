@@ -16,7 +16,9 @@ public class notepadGUI implements ActionListener {
     public JMenu textFont;
     public JMenu textSize;
     public JMenuItem wordWarp;
-    public JMenuItem size12,size14,size16,size18,size20,size24,size32;
+    public JMenuItem size12, size14, size16, size18, size20, size24, size32;
+    public JMenuItem undo;
+    public JMenuItem redo;
     public boolean warpOn;
 
     notepadFunction func = new notepadFunction(this);
@@ -32,6 +34,7 @@ public class notepadGUI implements ActionListener {
         menuInit();
         warpOn = false;
         format.textWarp();
+        format.setFont("Arial");
         format.setSize(12);
         format.fontInit();
         window.setVisible(true);
@@ -95,10 +98,24 @@ public class notepadGUI implements ActionListener {
 
         //noinspection BoundFieldAssignment
         edit = new JMenu("Edit");
+
+        redo = new JMenuItem("Redo");
+        redo.setAccelerator(KeyStroke.getKeyStroke('Z', Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
+        redo.addActionListener(this);
+        redo.setActionCommand("redo");
+        edit.add(redo);
+
+        undo = new JMenuItem("Undo");
+        undo.setAccelerator(KeyStroke.getKeyStroke('Z', Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx() + InputEvent.SHIFT_DOWN_MASK));
+        undo.addActionListener(this);
+        undo.setActionCommand("undo");
+        edit.add(undo);
+
         mainMenu.add(edit);
 
         //noinspection BoundFieldAssignment
         textFormat = new JMenu("Format");
+
         wordWarp = new JMenuItem("Word Warp Off");
         wordWarp.addActionListener(this);
         wordWarp.setActionCommand("warp");
@@ -106,7 +123,7 @@ public class notepadGUI implements ActionListener {
 
         textFont = new JMenu("Font");
 
-        textSize = new JMenu("Size");
+        textSize = new JMenu("Font Size");
         size12 = new JMenuItem("12");
         size12.addActionListener(this);
         size12.setActionCommand("12");
@@ -166,28 +183,28 @@ public class notepadGUI implements ActionListener {
             case "exit":
                 func.exitApp();
                 break;
-            case"warp":
+            case "warp":
                 format.textWarp();
                 break;
-            case"12":
+            case "12":
                 format.setSize(12);
                 break;
-            case"14":
+            case "14":
                 format.setSize(14);
                 break;
-            case"16":
+            case "16":
                 format.setSize(16);
                 break;
-            case"18":
+            case "18":
                 format.setSize(18);
                 break;
-            case"20":
+            case "20":
                 format.setSize(20);
                 break;
-            case"24":
+            case "24":
                 format.setSize(24);
                 break;
-            case"32":
+            case "32":
                 format.setSize(32);
                 break;
         }
