@@ -109,17 +109,17 @@ public class notepadGUI implements ActionListener {
         //noinspection BoundFieldAssignment
         edit = new JMenu("Edit");
 
-        redo = new JMenuItem("Redo");
-        redo.setAccelerator(KeyStroke.getKeyStroke('Z', Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
-        redo.addActionListener(this);
-        redo.setActionCommand("redo");
-        edit.add(redo);
-
         undo = new JMenuItem("Undo");
-        undo.setAccelerator(KeyStroke.getKeyStroke('Z', Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx() + InputEvent.SHIFT_DOWN_MASK));
+        undo.setAccelerator(KeyStroke.getKeyStroke('Z', Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
         undo.addActionListener(this);
         undo.setActionCommand("undo");
         edit.add(undo);
+
+        redo = new JMenuItem("Redo");
+        redo.setAccelerator(KeyStroke.getKeyStroke('Z', Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx() + InputEvent.SHIFT_DOWN_MASK));
+        redo.addActionListener(this);
+        redo.setActionCommand("redo");
+        edit.add(redo);
 
         mainMenu.add(edit);
 
