@@ -1,5 +1,5 @@
-/**
- * @(#)MenuScroller.java	1.5.0 04/02/12
+/*
+  @(#)MenuScroller.java	1.5.0 04/02/12
  */
 
 import java.awt.Color;
@@ -37,8 +37,8 @@ public class MenuScroller {
     //private JMenu menu;
     private JPopupMenu menu;
     private Component[] menuItems;
-    private MenuScrollItem upItem;
-    private MenuScrollItem downItem;
+    private final MenuScrollItem upItem;
+    private final MenuScrollItem downItem;
     private final MenuScrollListener menuListener = new MenuScrollListener();
     private int scrollCount;
     private int interval;
@@ -394,8 +394,7 @@ public class MenuScroller {
         if (item == null) {
             keepVisibleIndex = -1;
         } else {
-            int index = menu.getComponentIndex(item);
-            keepVisibleIndex = index;
+            keepVisibleIndex = menu.getComponentIndex(item);
         }
     }
 
@@ -525,7 +524,7 @@ public class MenuScroller {
     private class MenuScrollItem extends JMenuItem
             implements ChangeListener {
 
-        private MenuScrollTimer timer;
+        private final MenuScrollTimer timer;
 
         public MenuScrollItem(MenuIcon icon, int increment) {
             setIcon(icon);

@@ -15,6 +15,9 @@ public class notepadGUI implements ActionListener {
     public JFrame window;
     public JMenu textFont;
     public JMenu textSize;
+    public JMenuItem wordWarp;
+    public JMenuItem size12,size14,size16,size18,size20,size24,size32;
+    public boolean warpOn;
 
     notepadFunction func = new notepadFunction(this);
     notepadFormat format = new notepadFormat(this);
@@ -27,6 +30,9 @@ public class notepadGUI implements ActionListener {
         createWindow();
         init();
         menuInit();
+        warpOn = false;
+        format.textWarp();
+        format.setSize(12);
         format.fontInit();
         window.setVisible(true);
     }
@@ -93,9 +99,50 @@ public class notepadGUI implements ActionListener {
 
         //noinspection BoundFieldAssignment
         textFormat = new JMenu("Format");
-        textFont = new JMenu("Font");
-        textSize = new JMenu("Size");
+        wordWarp = new JMenuItem("Word Warp Off");
+        wordWarp.addActionListener(this);
+        wordWarp.setActionCommand("warp");
+        textFormat.add(wordWarp);
 
+        textFont = new JMenu("Font");
+
+        textSize = new JMenu("Size");
+        size12 = new JMenuItem("12");
+        size12.addActionListener(this);
+        size12.setActionCommand("12");
+        textSize.add(size12);
+
+        size14 = new JMenuItem("14");
+        size14.addActionListener(this);
+        size14.setActionCommand("14");
+        textSize.add(size14);
+
+        size16 = new JMenuItem("16");
+        size16.addActionListener(this);
+        size16.setActionCommand("16");
+        textSize.add(size16);
+
+        size18 = new JMenuItem("18");
+        size18.addActionListener(this);
+        size18.setActionCommand("18");
+        textSize.add(size18);
+
+        size20 = new JMenuItem("20");
+        size20.addActionListener(this);
+        size20.setActionCommand("20");
+        textSize.add(size20);
+
+        size24 = new JMenuItem("24");
+        size24.addActionListener(this);
+        size24.setActionCommand("24");
+        textSize.add(size24);
+
+        size32 = new JMenuItem("32");
+        size32.addActionListener(this);
+        size32.setActionCommand("32");
+        textSize.add(size32);
+
+        textFormat.add(textSize);
         window.setJMenuBar(mainMenu);
     }
 
@@ -118,6 +165,30 @@ public class notepadGUI implements ActionListener {
                 break;
             case "exit":
                 func.exitApp();
+                break;
+            case"warp":
+                format.textWarp();
+                break;
+            case"12":
+                format.setSize(12);
+                break;
+            case"14":
+                format.setSize(14);
+                break;
+            case"16":
+                format.setSize(16);
+                break;
+            case"18":
+                format.setSize(18);
+                break;
+            case"20":
+                format.setSize(20);
+                break;
+            case"24":
+                format.setSize(24);
+                break;
+            case"32":
+                format.setSize(32);
                 break;
         }
     }
